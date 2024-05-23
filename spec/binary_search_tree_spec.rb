@@ -17,5 +17,7 @@ RSpec.describe BinarySearchTree do
       expect(tree.insert(50, "Hannibal Buress: Animal Furnace")).to eq(2)
 
     end
+
+    it 
   end
 end
