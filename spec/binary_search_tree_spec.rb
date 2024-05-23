@@ -1,14 +1,17 @@
-require "./lib/binary_search_tree"
-require "./lib/node"
 require 'spec_helper'
-require 'simplecov'
 
 RSpec.describe BinarySearchTree do 
-  
-  describe "insert" do
-    tree = BinarySearchTree.new
-    tree.insert(61, "Bill & Ted's Excellent Adventure")
-    expect(tree).to eq(1)
+  describe 'initialize' do 
+    xit 'exists and has attributes' do 
+      tree = BinarySearchTree.new
+      
+    end
+  end
 
+  describe 'methods' do 
+    it "insert" do
+      tree = BinarySearchTree.new
+      expect(tree.insert(61, "Bill & Ted's Excellent Adventure")).to eq(0)
+    end
   end
 end

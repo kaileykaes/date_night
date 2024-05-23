@@ -9,5 +9,4 @@ class Node
     @right = right
     @parent = parent
   end
-
 end
