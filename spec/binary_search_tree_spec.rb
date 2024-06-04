@@ -2,9 +2,9 @@ require 'spec_helper'
 
 RSpec.describe BinarySearchTree do 
   describe 'initialize' do 
-    xit 'exists and has attributes' do 
+    it 'exists and has attributes' do 
       tree = BinarySearchTree.new
-      
+      expect(@root).to eq(nil)
     end
   end
 
