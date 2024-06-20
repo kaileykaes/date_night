@@ -17,5 +17,14 @@ RSpec.describe BinarySearchTree do
       expect(tree.insert(50, "Hannibal Buress: Animal Furnace")).to eq(2)
 
     end
+
+    it "includes?" do
+      tree = BinarySearchTree.new
+      tree.insert(61, "Bill & Ted's Excellent Adventure")
+      tree.insert(16, "Johnny English")
+      tree.insert(92, "Sharknado 3")
+      expect(tree.includes?(16)).to eq(true)
+      expect(tree.includes?(17)).to eq(false)
+    end
   end
 end

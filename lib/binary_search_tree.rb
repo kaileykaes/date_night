@@ -45,4 +45,19 @@ class BinarySearchTree
     end
     return count
   end
+
+  def includes?(value, current = nil)
+    if current == nil
+      current = @root
+    end
+    if value == current.score
+      return true
+    elsif value < current.score && current.left != nil
+      includes?(value, current.left)
+    elsif value > current.score && current.right != nil
+      includes?(value, current.rigt)
+    else 
+      false
+    end
+  end
 end
