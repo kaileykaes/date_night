@@ -55,9 +55,29 @@ class BinarySearchTree
     elsif value < current.score && current.left != nil
       includes?(value, current.left)
     elsif value > current.score && current.right != nil
-      includes?(value, current.rigt)
+      includes?(value, current.right)
     else 
       false
     end
+  end
+
+  def depth_of(value, current = nil, counter = 0)
+    
+    if current == nil
+      current = @root
+    end
+
+    if value == current.score
+      return counter
+    elsif value < current.score && current.left != nil
+      counter += 1
+      depth_of(value, current.left, counter)
+    elsif value > current.score && current.right != nil
+      counter += 1
+      depth_of(value, current.right, counter)
+    else 
+      nil
+    end
+
   end
 end
