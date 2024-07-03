@@ -78,6 +78,6 @@ class BinarySearchTree
     else 
       nil
     end
-
+      #new variable is called counter. counter works by increasing by one every recurssion
   end
 end
