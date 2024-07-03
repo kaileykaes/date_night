@@ -38,5 +38,15 @@ RSpec.describe BinarySearchTree do
       expect(tree.depth_of(92)).to eq(1)
       expect(tree.depth_of(5)).to eq(nil)
     end
+
+    it "max & min" do
+      tree = BinarySearchTree.new
+      tree.insert(61, "Bill & Ted's Excellent Adventure")
+      tree.insert(16, "Johnny English")
+      tree.insert(92, "Sharknado 3")
+      tree.insert(50, "Hannibal Buress: Animal Furnace")
+      expect(tree.max).to eq({"Sharknado 3"=>92})
+      expect(tree.min).to eq({"Johnny English"=>16})
+    end
   end
 end

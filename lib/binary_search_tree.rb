@@ -80,4 +80,20 @@ class BinarySearchTree
     end
       #new variable is called counter. counter works by increasing by one every recurssion
   end
+
+  def max
+    current = @root
+    until current.right == nil
+      current = current.right
+    end
+    {current.title => current.score}
+  end
+
+  def min
+    current = @root
+    until current.left == nil
+      current = current.left
+    end
+    {current.title => current.score}
+  end
 end
