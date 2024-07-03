@@ -45,4 +45,39 @@ class BinarySearchTree
     end
     return count
   end
+
+  def includes?(value, current = nil)
+    if current == nil
+      current = @root
+    end
+    if value == current.score
+      return true
+    elsif value < current.score && current.left != nil
+      includes?(value, current.left)
+    elsif value > current.score && current.right != nil
+      includes?(value, current.right)
+    else 
+      false
+    end
+  end
+
+  def depth_of(value, current = nil, counter = 0)
+    
+    if current == nil
+      current = @root
+    end
+
+    if value == current.score
+      return counter
+    elsif value < current.score && current.left != nil
+      counter += 1
+      depth_of(value, current.left, counter)
+    elsif value > current.score && current.right != nil
+      counter += 1
+      depth_of(value, current.right, counter)
+    else 
+      nil
+    end
+      #new variable is called counter. counter works by increasing by one every recurssion
+  end
 end
