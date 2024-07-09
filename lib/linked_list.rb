@@ -59,6 +59,14 @@ class LinkedList
     count
   end
 
+  def pop(index)
+    current_node = @head
+    index + 1.times do 
+      current_node = current_node.next_node
+    end
+    current_node
+  end
+
   def string_maker
     string = []
     current_node = @head
