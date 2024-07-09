@@ -96,7 +96,7 @@ class BinarySearchTree
   end
   
   def sort
-    current = self.minimize
+    current = @root
     sorted = [] 
     sorted << compile(current)
 
