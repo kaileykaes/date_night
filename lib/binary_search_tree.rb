@@ -1,5 +1,6 @@
 class BinarySearchTree
-  attr_reader :current_value
+  attr_reader :current_value,
+              :root
   
   def initialize(root = nil)
     @root = root
@@ -29,7 +30,7 @@ class BinarySearchTree
       parent_count(new_node)
     elsif score < current_node.score && current_node.left != nil
       insert_node(score, title, current_node.left)
-    elsif score < current_node.score && current_node.right != nil
+    elsif score > current_node.score && current_node.right != nil
       insert_node(score, title, current_node.right)
     else
       return "error: node unprocessable"
@@ -90,10 +91,30 @@ class BinarySearchTree
   end
 
   def min
+    found_node = self.minimize
+    compile(found_node)
+  end
+  
+  def sort
+    current = self.minimize
+    sorted = [] 
+    sorted << compile(current)
+
+    if current.right != nil
+      require 'pry'; binding.pry
+    end
+
+  end
+  
+  def minimize
     current = @root
     until current.left == nil
       current = current.left
     end
-    {current.title => current.score}
+    current
+  end
+  
+  def compile(node)
+    {node.title => node.score}
   end
 end
