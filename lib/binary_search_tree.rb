@@ -96,14 +96,16 @@ class BinarySearchTree
   end
   
   def sort
-    # sorted = [] 
-    # sorted << compile(current)
-    list = LinkedList.new
-    list.head = @root
+    if @root == nil
+      return
+    end
 
-    
-    # while list.head != nil
-    # end
+    list = LinkedList.new
+    list.append = @root
+
+    while list.count != 0
+      list.pop(0)
+    end
   end
   
   def minimize

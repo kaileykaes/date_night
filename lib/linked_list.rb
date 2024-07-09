@@ -12,19 +12,22 @@ class LinkedList
   end
 
   def append(score, title)
-    current_node = @head
-    until current_node.next_node == nil
-      current_node = current_node.next_node
+    if @head == nil
+      @head = Node.new(score, title)
+    else
+      current_node = @head
+      until current_node.next_node == nil
+        current_node = current_node.next_node
+      end
+      new_node = Node.new(score, title)
+      current_node.next_node = new_node
     end
-    new_node = Node.new(score, title)
-    current_node.next_node = new_node
   end
 
   def insert(score, title, index)
     count = 0
     if index == 0
       new_node = Node.new(score, title)
-      new_node.next_node = @head
       @head = new_node
     else
       current_node = @head
@@ -43,10 +46,12 @@ class LinkedList
     (index - 1).times do
       current_node = current_node.next_node
     end
+    deleted_node = pop(index)
     tbd = current_node.next_node
     trailing_node = tbd.next_node
     current_node.next_node = trailing_node
     tbd.next_node = nil
+    deleted_node
   end
 
   def count
