@@ -51,4 +51,19 @@ RSpec.describe LinkedList do
       expect(list.count).to eq(3)
     end
   end
+
+  describe "pop" do 
+    it "returns node at specified index" do 
+      list = LinkedList.new
+      list.prepend(45, "brown")
+      list.prepend(67, "green")
+      list.append(90, "blue")
+      require 'pry'; binding.pry
+      node = list.pop(1)
+
+      expect(node).to be_a Node
+      expect(node.score).to eq(45)      
+      expect(node.title).to eq("brown")      
+    end
+  end
 end
