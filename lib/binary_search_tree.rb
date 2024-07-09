@@ -96,14 +96,14 @@ class BinarySearchTree
   end
   
   def sort
-    current = @root
-    sorted = [] 
-    sorted << compile(current)
+    # sorted = [] 
+    # sorted << compile(current)
+    list = LinkedList.new
+    list.head = @root
 
-    if current.right != nil
-      require 'pry'; binding.pry
-    end
-
+    
+    # while list.head != nil
+    # end
   end
   
   def minimize

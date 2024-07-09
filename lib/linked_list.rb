@@ -1,4 +1,5 @@
 class LinkedList
+  attr_reader :head
 
   def initialize
     @head = nil
@@ -46,6 +47,16 @@ class LinkedList
     trailing_node = tbd.next_node
     current_node.next_node = trailing_node
     tbd.next_node = nil
+  end
+
+  def count
+    current_node = @head
+    count = 1
+    until current_node.next_node == nil
+      current_node = current_node.next_node
+      count += 1
+    end
+    count
   end
 
   def string_maker
