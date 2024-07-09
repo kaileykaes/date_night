@@ -41,4 +41,14 @@ RSpec.describe LinkedList do
       expect(list.string_maker).to eq("green brown")
     end
   end
+
+  describe "count" do 
+    it "counts nodes in list" do 
+      list = LinkedList.new
+      list.prepend(35, "brown")
+      list.prepend(12, "green")
+      list.insert(7, "blue", 1)
+      expect(list.count).to eq(3)
+    end
+  end
 end
