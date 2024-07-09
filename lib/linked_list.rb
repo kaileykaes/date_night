@@ -5,39 +5,41 @@ class LinkedList
     @head = nil
   end
 
-  def prepend(score, title)
-    new_node = Node.new(score, title)
+  def prepend(node)
+    new_node = node
     new_node.next_node = @head
     @head = new_node
   end
 
-  def append(score, title)
+  def append(node)
     if @head == nil
-      @head = Node.new(score, title)
+      @head = node
     else
       current_node = @head
       until current_node.next_node == nil
         current_node = current_node.next_node
       end
-      new_node = Node.new(score, title)
-      current_node.next_node = new_node
+      current_node.next_node = node
     end
   end
 
-  def insert(score, title, index)
+  def insert(node, index)
     count = 0
     if index == 0
-      new_node = Node.new(score, title)
-      @head = new_node
+      @head = node
     else
       current_node = @head
       (index - 1).times do
         current_node = current_node.next_node
       end
-      trailing_node = current_node.next_node
-      new_node= Node.new(score, title)
-      current_node.next_node = new_node
-      new_node.next_node = trailing_node
+      if current_node.next_node == nil
+        trailing_node = nil
+      else
+        trailing_node = current_node.next_node
+      end
+
+      current_node.next_node = node
+      node.next_node = trailing_node
     end
   end
 
@@ -80,5 +82,23 @@ class LinkedList
         current_node = current_node.next_node
     end
     string.join(" ")
+  end
+
+  def insert_by_score(node)
+    if @head == nil
+      @head = node
+    else
+      current_node = @head
+      if node.score < current_node.score
+        prepend(node)
+      else
+        count = 1
+        until node.score <= current_node.score || current_node.next_node == nil 
+          current_node = current_node.next_node 
+          count += 1
+        end
+        insert(node, count)
+      end
+    end
   end
 end
