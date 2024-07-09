@@ -100,11 +100,22 @@ class BinarySearchTree
       return
     end
 
-    list = LinkedList.new
-    list.append = @root
+    traversal_list = LinkedList.new
+    traversal_list.append = @root
 
-    while list.count != 0
-      list.pop(0)
+    
+    while traversal_list.count != 0
+      node = traversal_list.delete(0)
+
+      if node.right != nil
+        traversal_list.append(node.right) 
+      end
+
+      if node.left != nil
+        traversal_list.append(node.left)  
+      end
+
+
     end
   end
   
