@@ -96,26 +96,27 @@ class BinarySearchTree
   end
   
   def sort
-    if @root == nil
-      return
+    if @root == nil 
+      return 'no root'
     end
 
-    traversal_list = LinkedList.new
-    traversal_list.append = @root
+    sorting_list = LinkedList.new
 
-    
+    traversal_list = LinkedList.new
+    traversal_list.append(@root)
+
     while traversal_list.count != 0
       node = traversal_list.delete(0)
-
+      sorting_list.insert_by_score(node)
       if node.right != nil
         traversal_list.append(node.right) 
+        sorting_list.insert_by_score(node.right)
       end
-
-      if node.left != nil
+      
+      if node.left == nil
         traversal_list.append(node.left)  
+        sorting_list.insert_by_score(node.left)
       end
-
-
     end
   end
   
