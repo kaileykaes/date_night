@@ -73,7 +73,7 @@ class LinkedList
 
   def pop(index)
     current_node = @head
-    index + 1.times do 
+    index.times do 
       current_node = current_node.next_node
     end
     current_node

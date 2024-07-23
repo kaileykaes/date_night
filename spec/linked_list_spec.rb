@@ -3,7 +3,7 @@ require "./lib/node"
 
 RSpec.describe LinkedList do
   describe "prepend" do
-    xit "adds a node to the beginning of the list" do
+    it "adds a node to the beginning of the list" do
       list = LinkedList.new
       node_1 = Node.new(1, "brown")
       node_2 = Node.new(1, "green")
@@ -14,7 +14,7 @@ RSpec.describe LinkedList do
   end
 
   describe "append" do
-    xit "adds a node to the end of the list" do
+    it "adds a node to the end of the list" do
       list = LinkedList.new
       node_1 = Node.new(1, "brown")
       node_2 = Node.new(1, "green")
@@ -27,18 +27,18 @@ RSpec.describe LinkedList do
   end
 
   describe "insert" do
-    xit "adds a node to a specfic point of the list" do
+    it "adds a node to a specfic point of the list" do
       list = LinkedList.new
       node_1 = Node.new(34, "brown")
       node_2 = Node.new(25, "green")
       node_3 = Node.new(67, "blue")
       list.append(node_1)
       list.append(node_2)
-      list.insert(node_3, 1)
+      list.insert(node_3, 0)
 
-      expect(list.pop(1).score).to eq(67)
-      expect(list.pop(1).title).to eq("blue")
-      expect(list.pop(1)).to be_a Node
+      expect(list.pop(0).score).to eq(67)
+      expect(list.pop(0).title).to eq("blue")
+      expect(list.pop(0)).to be_a Node
     end
   end
 
@@ -60,7 +60,7 @@ RSpec.describe LinkedList do
   end
 
   describe "delete" do
-    xit "deletes a node to a specfic point of the list" do
+    it "deletes a node to a specfic point of the list" do
       list = LinkedList.new
       node_1 = Node.new(35, "brown")
       node_2 = Node.new(12, "green")
@@ -79,7 +79,7 @@ RSpec.describe LinkedList do
   end
 
   describe "count" do 
-    xit "counts nodes in list" do 
+    it "counts nodes in list" do 
       list = LinkedList.new
       node_1 = Node.new(35, "brown")
       node_2 = Node.new(12, "green")
@@ -93,7 +93,7 @@ RSpec.describe LinkedList do
   end
 
   describe "pop" do 
-    xit "returns node at specified index" do 
+    it "returns node at specified index" do 
       list = LinkedList.new
       node_1 = Node.new(34, "brown")
       node_2 = Node.new(67, "green")

@@ -56,6 +56,7 @@ RSpec.describe BinarySearchTree do
       tree.insert(50, "Hannibal Buress: Animal Furnace")
       tree.insert(26, "Titanic")
       tree.insert(17, "Up")
+      require 'pry'; binding.pry
       expect(tree.sort).to eq(
         [
           {"Johnny English"=>16},
