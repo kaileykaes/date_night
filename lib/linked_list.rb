@@ -45,6 +45,13 @@ class LinkedList
 
   def delete(index)
     current_node = @head
+
+    if index == 0
+      @head = current_node.next_node
+      require 'pry'; binding.pry
+      return current_node
+    end
+
     (index - 1).times do
       current_node = current_node.next_node
     end

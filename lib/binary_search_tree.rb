@@ -100,24 +100,38 @@ class BinarySearchTree
       return 'no root'
     end
 
-    sorting_list = LinkedList.new
+    queue = LinkedList.new
 
-    traversal_list = LinkedList.new
-    traversal_list.append(@root)
+    sorted = LinkedList.new
 
-    while traversal_list.count != 0
-      node = traversal_list.delete(0)
-      sorting_list.insert_by_score(node)
-      if node.right != nil
-        traversal_list.append(node.right) 
-        sorting_list.insert_by_score(node.right)
-      end
+    queue.append(@root)
+    
+    while queue.count > 0
+
+      current_node = queue.head
+
+      queue.append(current_node.left)
+      queue.append(current_node.right)
       
-      if node.left == nil
-        traversal_list.append(node.left)  
-        sorting_list.insert_by_score(node.left)
-      end
+      sorted.insert_by_score(current_node)
+
+      queue.delete(0)
+      require 'pry'; binding.pry
     end
+
+    # while traversal_list.count != 0
+    #   node = traversal_list.delete(0)
+    #   sorting_list.insert_by_score(node)
+    #   if node.right != nil
+    #     traversal_list.append(node.right) 
+    #     sorting_list.insert_by_score(node.right)
+    #   end
+      
+    #   if node.left == nil
+    #     traversal_list.append(node.left)  
+    #     sorting_list.insert_by_score(node.left)
+    #   end
+  # end
   end
   
   def minimize

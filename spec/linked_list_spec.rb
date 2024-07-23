@@ -76,6 +76,23 @@ RSpec.describe LinkedList do
       expect(node.title).to eq("blue")
       expect(list.string_maker).to eq("green brown")
     end
+
+    it "can delete the first node" do
+      list = LinkedList.new
+      node_1 = Node.new(35, "brown")
+      node_2 = Node.new(12, "green")
+      node_3 = Node.new(7, "blue")
+      list.append(node_1)
+      list.append(node_2)
+      list.append(node_3)
+
+      node = list.delete(0)
+
+      expect(node).to be_a Node
+      expect(node.score).to eq(35)
+      expect(node.title).to eq("brown")
+      expect(list.string_maker).to eq("green blue")
+    end
   end
 
   describe "count" do 
