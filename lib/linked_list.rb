@@ -57,7 +57,7 @@ class LinkedList
       trailing_node = tbd.next_node
     end
     current_node.next_node = trailing_node
-    # tbd.next_node = nil
+    tbd.next_node = nil
     deleted_node
   end
 
