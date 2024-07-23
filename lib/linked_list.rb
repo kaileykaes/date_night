@@ -45,7 +45,6 @@ class LinkedList
 
   def delete(index)
     current_node = @head
-
     if index == 0
       @head = current_node.next_node
       require 'pry'; binding.pry
@@ -69,7 +68,11 @@ class LinkedList
   end
 
   def count
-    current_node = @head
+    if @head == nil
+      return 0
+    end
+    # break
+    current_node = @head 
     count = 1
     until current_node.next_node == nil
       current_node = current_node.next_node

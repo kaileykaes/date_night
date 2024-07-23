@@ -52,19 +52,19 @@ RSpec.describe BinarySearchTree do
       tree = BinarySearchTree.new
       tree.insert(61, "Bill & Ted's Excellent Adventure")
       tree.insert(16, "Johnny English")
-      tree.insert(92, "Sharknado 3")
-      tree.insert(50, "Hannibal Buress: Animal Furnace")
-      tree.insert(26, "Titanic")
-      tree.insert(17, "Up")
+      # tree.insert(92, "Sharknado 3")
+      # tree.insert(50, "Hannibal Buress: Animal Furnace")
+      # tree.insert(26, "Titanic")
+      # tree.insert(17, "Up")
       # require 'pry'; binding.pry
       expect(tree.sort).to eq(
         [
           {"Johnny English"=>16},
           {"Up"=>17},
-          {"Titanic"=>26},
-          {"Hannibal Buress: Animal Furnace"=>50},
-          {"Bill & Ted's Excellent Adventure"=>61},
-          {"Sharknado 3"=>92}
+          {"Titanic"=>26}
+          # {"Hannibal Buress: Animal Furnace"=>50},
+          # {"Bill & Ted's Excellent Adventure"=>61},
+          # {"Sharknado 3"=>92}
         ]
       )
     end

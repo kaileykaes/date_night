@@ -110,8 +110,13 @@ class BinarySearchTree
 
       current_node = queue.head
 
-      queue.append(current_node.left)
-      queue.append(current_node.right)
+      if current_node.left != nil
+        queue.append(current_node.left)
+      end
+
+      if current_node.right != nil
+        queue.append(current_node.right)
+      end
       
       sorted.insert_by_score(current_node)
 
@@ -132,6 +137,7 @@ class BinarySearchTree
     #     sorting_list.insert_by_score(node.left)
     #   end
   # end
+    sorted
   end
   
   def minimize
