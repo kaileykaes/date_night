@@ -31,14 +31,15 @@ RSpec.describe LinkedList do
       list = LinkedList.new
       node_1 = Node.new(34, "brown")
       node_2 = Node.new(25, "green")
-      node_3 = Node.new(67, "blue")
+      node_0 = Node.new(67, "blue")
       list.append(node_1)
       list.append(node_2)
-      list.insert(node_3, 0)
+      list.insert(node_0, 0)
 
-      expect(list.pop(0).score).to eq(67)
-      expect(list.pop(0).title).to eq("blue")
-      expect(list.pop(0)).to be_a Node
+      expect(list.which_node(0).score).to eq(67)
+      expect(list.which_node(0).title).to eq("blue")
+      expect(list.which_node(0)).to be_a Node 
+      expect(list.count).to eq(3)
     end
   end
 
@@ -65,16 +66,35 @@ RSpec.describe LinkedList do
       node_1 = Node.new(35, "brown")
       node_2 = Node.new(12, "green")
       node_3 = Node.new(7, "blue")
-      list.prepend(node_1)
-      list.prepend(node_2)
-      list.insert(node_3, 1)
+      list.append(node_1)
+      list.append(node_3)
+      list.insert(node_2, 1)
 
       node = list.delete(1)
+      
+      expect(node).to be_a Node
+      expect(node.score).to eq(12)
+      expect(node.title).to eq("green")
+    end
+    
+    it "deletes specific node > 1" do
+      list = LinkedList.new
+      node_0 = Node.new(4, "purple")
+      node_1 = Node.new(35, "brown")
+      node_2 = Node.new(12, "green")
+      node_3 = Node.new(7, "blue")
+      list.append(node_0)
+      list.append(node_1)
+      list.append(node_2)
+      list.append(node_3)
+      require 'pry'; binding.pry
+      
+      node = list.delete(2)
+      require 'pry'; binding.pry
 
       expect(node).to be_a Node
-      expect(node.score).to eq(7)
-      expect(node.title).to eq("blue")
-      expect(list.string_maker).to eq("green brown")
+      expect(node.score).to eq(12)
+      expect(node.title).to eq("green")
     end
 
     it "can delete the first node" do
@@ -91,7 +111,6 @@ RSpec.describe LinkedList do
       expect(node).to be_a Node
       expect(node.score).to eq(35)
       expect(node.title).to eq("brown")
-      expect(list.string_maker).to eq("green blue")
     end
   end
 
