@@ -44,49 +44,48 @@ class LinkedList
   end
   
   def delete(index)
-    if self.count > 1
-      if index == 0 
-        deleted_node = @head
-        @head = nil
-        @head = deleted_node.next_node # test if this breaks when list is only 1 long
-      else
-        prior_node = @head
-        current_node = @head.next_node
-        future_node = current_node.next_node
-        (index - 1).times do # if index is more than zero,
-          prior_node = prior_node.next_node #traverse list from behind deletion point
-          current_node = current_node.next_node #traverse list until just before the insertion point
-        end
-
-        deleted_node = current_node
-
-        unless current_node.next_node == nil 
-          trailing_node = current_node.next_node
-          current_node = nil
-          prior_node.next_node = trailing_node
-        else
-          current_node = nil
-        end
-      end
-    else
+    if index == 0 
+      require 'pry'; binding.pry
       deleted_node = @head
       @head = nil
+      @head = deleted_node.next_node # test if this breaks when list is only 1 long
+    else
+      prior_node = @head
+      current_node = @head.next_node
+      future_node = current_node.next_node
+      (index - 1).times do # if index is more than zero,
+        prior_node = prior_node.next_node #traverse list from behind deletion point
+        current_node = current_node.next_node #traverse list until just before the insertion point
+      end
+
+      deleted_node = current_node
+
+      unless current_node.next_node == nil 
+        trailing_node = current_node.next_node
+        current_node = nil
+        prior_node.next_node = trailing_node
+      else
+        current_node = nil
+      end
     end
-      deleted_node
+    deleted_node
   end
 
-  def count 
-    counter = 1
+  def count
+    require 'pry'; binding.pry
     if @head == nil 
       0 
     else
       current_node = @head 
-      until current_node.next_node == nil || current_node.next_node.tag == true
+      counter = 1
+      require 'pry'; binding.pry
+      until current_node.next_node == nil || current_node.next_node.tag == false
+        require 'pry'; binding.pry
         current_node = current_node.next_node 
         counter += 1
       end
+      counter
     end
-    counter
   end
 
   def which_node(index)

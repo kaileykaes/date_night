@@ -137,6 +137,12 @@ RSpec.describe LinkedList do
 
       expect(list.count).to eq(3)
     end
+
+    it "counts empty list" do 
+      list = LinkedList.new
+
+      expect(list.count).to eq(0)
+    end
   end
 
   describe "which_node" do 
