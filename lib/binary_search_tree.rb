@@ -1,6 +1,5 @@
 class BinarySearchTree
-  attr_reader :current_value,
-              :root
+  attr_reader :root
   
   def initialize(root = nil)
     @root = root
@@ -106,7 +105,7 @@ class BinarySearchTree
 
     queue.append(@root)
     
-    while queue.count > 0
+    while queue.count > 0 #simply appending left and right nodes and deleting head
 
       current_node = queue.head
 
@@ -121,7 +120,6 @@ class BinarySearchTree
       sorted.insert_by_score(current_node)
 
       queue.delete(0)
-      require 'pry'; binding.pry
     end
 
     # while traversal_list.count != 0
