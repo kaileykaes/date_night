@@ -92,37 +92,7 @@ class BinarySearchTree
   def min
     found_node = self.minimize
     compile(found_node)
-  end
-  
-  # def sort
-  #   if @root == nil 
-  #     return 'no root'
-  #   end
-
-  #   queue = LinkedList.new
-
-  #   sorted = LinkedList.new
-
-  #   queue.append(@root)
-
-  #   while queue.count > 0 #simply appending left and right nodes and deleting head
-
-  #     current_node = queue.head
-
-  #     if current_node.left != nil
-  #       queue.append(current_node.left)
-  #     end
-
-  #     if current_node.right != nil
-  #       queue.append(current_node.right)
-  #     end
-      
-  #     sorted.insert_by_score(current_node)
-
-  #     queue.delete(0)
-  #   end
-  #   sorted
-  # end
+  end=
   
   def sort
     sorting_list = LinkedList.new
