@@ -94,48 +94,59 @@ class BinarySearchTree
     compile(found_node)
   end
   
-  def sort
-    if @root == nil 
-      return 'no root'
-    end
+  # def sort
+  #   if @root == nil 
+  #     return 'no root'
+  #   end
 
-    queue = LinkedList.new
+  #   queue = LinkedList.new
 
-    sorted = LinkedList.new
+  #   sorted = LinkedList.new
 
-    queue.append(@root)
-    
-    while queue.count > 0 #simply appending left and right nodes and deleting head
+  #   queue.append(@root)
 
-      current_node = queue.head
+  #   while queue.count > 0 #simply appending left and right nodes and deleting head
 
-      if current_node.left != nil
-        queue.append(current_node.left)
-      end
+  #     current_node = queue.head
 
-      if current_node.right != nil
-        queue.append(current_node.right)
-      end
+  #     if current_node.left != nil
+  #       queue.append(current_node.left)
+  #     end
+
+  #     if current_node.right != nil
+  #       queue.append(current_node.right)
+  #     end
       
-      sorted.insert_by_score(current_node)
+  #     sorted.insert_by_score(current_node)
 
-      queue.delete(0)
-    end
-
-    # while traversal_list.count != 0
-    #   node = traversal_list.delete(0)
-    #   sorting_list.insert_by_score(node)
-    #   if node.right != nil
-    #     traversal_list.append(node.right) 
-    #     sorting_list.insert_by_score(node.right)
-    #   end
-      
-    #   if node.left == nil
-    #     traversal_list.append(node.left)  
-    #     sorting_list.insert_by_score(node.left)
-    #   end
+  #     queue.delete(0)
+  #   end
+  #   sorted
   # end
-    sorted
+  
+  def sort
+    sorting_list = LinkedList.new
+    traversal_list = LinkedList.new
+    traversal_list.append(@root)
+    
+    while traversal_list.count > 1
+      node = traversal_list.delete(0)
+      sorting_list.insert_by_score(node)
+      unless node == nil
+        if node.right != nil
+          traversal_list.append(node.right) 
+          node.right.next_node = nil
+          sorting_list.insert_by_score(node.right)
+        end
+        
+        if node.left != nil
+          traversal_list.append(node.left)  
+          node.left.next_node = nil
+          sorting_list.insert_by_score(node.left)
+        end
+      end
+    end
+    sorting_list
   end
   
   def minimize

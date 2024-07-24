@@ -110,6 +110,19 @@ RSpec.describe LinkedList do
       expect(node.score).to eq(35)
       expect(node.title).to eq("brown")
     end
+
+    it "can delete node if list is only 1 node long" do
+      list = LinkedList.new
+      node_1 = Node.new(35, "brown")
+    
+      list.append(node_1)
+      
+      node = list.delete(0)
+
+      expect(node).to be_a Node
+      expect(node.score).to eq(35)
+      expect(node.title).to eq("brown")
+    end
   end
 
   describe "count" do 
@@ -126,7 +139,7 @@ RSpec.describe LinkedList do
     end
   end
 
-  describe "pop" do 
+  describe "which_node" do 
     it "returns node at specified index" do 
       list = LinkedList.new
       node_1 = Node.new(34, "brown")
