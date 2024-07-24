@@ -87,10 +87,8 @@ RSpec.describe LinkedList do
       list.append(node_1)
       list.append(node_2)
       list.append(node_3)
-      require 'pry'; binding.pry
       
       node = list.delete(2)
-      require 'pry'; binding.pry
 
       expect(node).to be_a Node
       expect(node.score).to eq(12)
@@ -137,7 +135,7 @@ RSpec.describe LinkedList do
       list.append(node_1)
       list.append(node_2)
       list.append(node_3)
-      node = list.pop(1)
+      node = list.which_node(1)
 
       expect(node).to be_a Node
       expect(node.score).to eq(67)      
