@@ -24,6 +24,8 @@ RSpec.describe BinarySearchTree do
       expect(tree.insert(50, "Hannibal Buress: Animal Furnace")).to eq(2)
     end
 
+    it 'parent_count' 
+
     it "includes?" do
       expect(@tree.includes?(16)).to be true
       expect(@tree.includes?(17)).to be false
@@ -37,8 +39,11 @@ RSpec.describe BinarySearchTree do
       expect(@tree.depth_of(50)).to eq(2)
     end
 
-    it "max & min" do
+    it "max" do
       expect(@tree.max).to eq({"Sharknado 3"=>92})
+    end
+
+    it "min" do
       expect(@tree.min).to eq({"Johnny English"=>16})
     end
 
