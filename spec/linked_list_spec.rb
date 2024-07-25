@@ -112,5 +112,23 @@ RSpec.describe LinkedList do
       expect(node.score).to eq(25)      
       expect(node.title).to eq("green")      
     end
+
+    it 'digest' do 
+      list = LinkedList.new
+      node_1 = Node.new(0, 'Happy Feet')
+      node_2 = Node.new(96, 'Freedom Writers')
+      node_3 = Node.new(98, 'The Music Man')
+      list.append(node_1)
+      list.append(node_2)
+      list.append(node_3)
+
+      expected = list.digest
+
+      expect(expected).to eq([
+        {'Happy Feet' => 0}, 
+        {'Freedom Writers' => 96}, 
+        {'The Music Man' => 98}
+      ])
+    end
   end
 end

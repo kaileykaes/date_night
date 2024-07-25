@@ -120,4 +120,15 @@ class LinkedList
       end
     end
   end
+
+  def digest
+    digested = []
+    current_node = @head
+    until current_node.next_node == nil
+      digested << current_node.compile
+      current_node = current_node.next_node
+    end
+    digested << current_node.compile
+    digested
+  end
 end

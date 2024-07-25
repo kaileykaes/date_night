@@ -126,18 +126,4 @@ class BinarySearchTree
     end
     current
   end
-
-  def digest(list)
-    digested = []
-    current_node = list.head
-    until current_node.next_node == nil
-      digested << compile(current_node)
-      current_node = current_node.next_node
-    end
-    digested
-  end
-  
-  def compile(node)
-    {node.title => node.score}
-  end
 end
