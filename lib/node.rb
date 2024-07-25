@@ -11,4 +11,8 @@ class Node
     @next_node = next_node
     @tag = false
   end
+
+  def compile
+    {@title => @score}
+  end
 end

@@ -18,4 +18,12 @@ RSpec.describe Node do
       expect(@node.tag).to eq(false)
     end
   end
+
+  describe 'methods' do 
+    it '#compile' do 
+      expect(@node.compile).to eq({
+        'When Harry Met Sally' => 95
+      })
+    end
+  end
 end
