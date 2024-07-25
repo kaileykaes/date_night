@@ -45,7 +45,6 @@ class LinkedList
   
   def delete(index)
     if index == 0 
-      require 'pry'; binding.pry
       deleted_node = @head
       @head = nil
       @head = deleted_node.next_node # test if this breaks when list is only 1 long
@@ -72,18 +71,16 @@ class LinkedList
   end
 
   def count
-    require 'pry'; binding.pry
     if @head == nil 
       0 
     else
       current_node = @head 
       counter = 1
-      require 'pry'; binding.pry
-      until current_node.next_node == nil || current_node.next_node.tag == false
-        require 'pry'; binding.pry
+      until current_node.next_node == nil 
         current_node = current_node.next_node 
         counter += 1
       end
+
       counter
     end
   end
@@ -105,7 +102,7 @@ class LinkedList
     end
     string.join(" ")
   end
-
+  
   def insert_by_score(node)
     if @head == nil
       @head = node
