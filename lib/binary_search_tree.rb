@@ -7,7 +7,7 @@ class BinarySearchTree
 
   def insert(score, title)
     if @root == nil 
-      @root = Node.new(score, title)
+      @root = TreeNode.new(score, title)
       return 0 
     else
       insert_node(score, title, @root)
@@ -18,12 +18,12 @@ class BinarySearchTree
     #current_node is the dynamic node that will change
     current_node = node
     if score < current_node.score && current_node.left == nil
-      new_node = Node.new(score, title)
+      new_node = TreeNode.new(score, title)
       current_node.left = new_node
       new_node.parent = current_node
       parent_count(new_node)
     elsif score > current_node.score && current_node.right == nil
-      new_node = Node.new(score, title)
+      new_node = TreeNode.new(score, title)
       current_node.right = new_node
       new_node.parent = current_node
       parent_count(new_node)
@@ -98,6 +98,7 @@ class BinarySearchTree
     sorting_list = LinkedList.new
     traversal_list = LinkedList.new
     traversal_list.append(@root)
+    require 'pry'; binding.pry
     
     while traversal_list.count > 0
       require 'pry'; binding.pry
