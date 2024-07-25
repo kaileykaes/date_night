@@ -98,19 +98,16 @@ class BinarySearchTree
     sorting_list = LinkedList.new
     traversal_list = LinkedList.new
     traversal_list.append(@root)
-    require 'pry'; binding.pry
     
     while traversal_list.count > 0
-      require 'pry'; binding.pry
       node = traversal_list.delete(0)
       sorting_list.insert_by_score(node)
       # unless node == nil 
-        if node.right != nil && node.right.tag == false
-          node.right.next_node = nil
+        if node.right != nil 
           traversal_list.append(node.right) 
           sorting_list.insert_by_score(node.right)
         end
-        if node.left != nil && node.left.tag == false
+        if node.left != nil 
           node.left.next_node = nil 
           traversal_list.append(node.left)  
           sorting_list.insert_by_score(node.left)
