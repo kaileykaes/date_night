@@ -1,5 +1,4 @@
-require "./lib/linked_list"
-require "./lib/node"
+require 'spec_helper'
 
 RSpec.describe LinkedList do
   describe "prepend" do
