@@ -24,7 +24,11 @@ RSpec.describe BinarySearchTree do
       expect(tree.insert(50, "Hannibal Buress: Animal Furnace")).to eq(2)
     end
 
-    it 'parent_count' 
+    it 'parent_count' do 
+      node = @tree.root.left.right
+
+      expect(@tree.parent_count(node)).to eq(2)
+    end
 
     it "includes?" do
       expect(@tree.includes?(16)).to be true
