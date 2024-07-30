@@ -10,6 +10,11 @@ class LinkedList
     new_node = node
     new_node.next_node = @head
     @head = new_node
+    current_node = @head
+    until current_node.next_node == nil
+      current_node = current_node.next_node
+    end
+    @tail = current_node
   end
 
   def append(node)
@@ -20,7 +25,8 @@ class LinkedList
       until current_node.next_node == nil
         current_node = current_node.next_node
       end
-      current_node.next_node = node #memoization might help?
+      current_node.next_node = node 
+      @tail = node
     end
   end
 
