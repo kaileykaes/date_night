@@ -21,11 +21,12 @@ class LinkedList
       until current_node.next_node == nil
         current_node = current_node.next_node
       end
-      current_node.next_node = node #memoization might help?
+      current_node.next_node = node 
+      @tail = current_node.next_node
     end
   end
 
-  def insert(node, index) #perhaps memoization could help here 
+  def insert(node, index) 
     current_node = @head #starting at the head either way
     if index == 0 #if inserting at 0, 
       @head = node #node is new head
