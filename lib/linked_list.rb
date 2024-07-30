@@ -1,8 +1,9 @@
 class LinkedList
-  attr_reader :head
+  attr_reader :head, :tail
 
   def initialize
     @head = nil
+    @tail = nil
   end
 
   def prepend(node)

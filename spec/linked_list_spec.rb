@@ -16,6 +16,7 @@ RSpec.describe LinkedList do
       @list.prepend(@node_1)
       @list.prepend(@node_2)
       expect(@list.head).to eq(@node_2)
+      expect(@list.tail).to eq(@node_1)
     end
 
     it "#append" do
