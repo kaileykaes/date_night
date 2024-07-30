@@ -20,6 +20,7 @@ class LinkedList
   def append(node)
     if @head == nil
       @head = node
+      @tail = node
     else
       current_node = @head
       until current_node.next_node == nil

@@ -23,7 +23,7 @@ RSpec.describe LinkedList do
       @list.prepend(@node_1)
       @list.prepend(@node_2)
       @list.append(@node_3)
-
+      
       head = @list.head
       second_node = @list.head.next_node
       third_node = @list.head.next_node.next_node
@@ -32,6 +32,15 @@ RSpec.describe LinkedList do
       expect(second_node).to eq(@node_1)
       expect(third_node).to eq(@node_3)
       expect(tail).to eq(@node_3)
+    end
+    
+    it '#append if only 1' do 
+      @list.append(@node_3)
+      head = @list.head
+      tail = @list.tail
+      
+      expect(head).to eq(tail)
+      expect(@list.count).to eq(1)
     end
 
     it "insert" do
