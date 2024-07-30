@@ -83,6 +83,7 @@ class BinarySearchTree
       node = traversal_list.delete(0)
       sorting_list.insert_by_score(node)
       # unless node == nil 
+      #lets try memoization here ||= 
       if node.right != nil && node.right.tag == false
         node.right.next_node = nil
         traversal_list.append(node.right) 
