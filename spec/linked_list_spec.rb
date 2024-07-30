@@ -27,9 +27,11 @@ RSpec.describe LinkedList do
       head = @list.head
       second_node = @list.head.next_node
       third_node = @list.head.next_node.next_node
+      tail = @list.tail
       expect(head).to eq(@node_2)
       expect(second_node).to eq(@node_1)
       expect(third_node).to eq(@node_3)
+      expect(tail).to eq(@node_3)
     end
 
     it "insert" do
@@ -52,6 +54,7 @@ RSpec.describe LinkedList do
       expect(@list.head).to eq(@node_2)
       expect(@list.head.next_node).to eq(@node_1)
       expect(@list.head.next_node.next_node).to eq(@node_3)
+      expect(@list.tail).to eq(@node_3)
     end
 
     it "#delete" do
