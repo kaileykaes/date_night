@@ -52,6 +52,7 @@ RSpec.describe LinkedList do
       expect(@list.which_node(0).title).to eq("blue")
       expect(@list.which_node(0)).to be_a Node 
       expect(@list.count).to eq(3)
+      expect(@list.tail).to eq(@node_2)
     end
 
     it "#insert_by_score" do
