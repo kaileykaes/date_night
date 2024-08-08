@@ -7,14 +7,14 @@ class LinkedList
   end
 
   def prepend(node)
-    new_node = node
-    new_node.next_node = @head
-    @head = new_node
-    current_node = @head
-    until current_node.next_node == nil
-      current_node = current_node.next_node
+    if @head == nil
+      @head = node 
+      @tail = node
+    else
+      new_node = node
+      new_node.next_node = @head
+      @head = new_node
     end
-    @tail = current_node
   end
 
   def append(node)
@@ -22,18 +22,17 @@ class LinkedList
       @head = node
       @tail = node
     else
-      current_node = @head
-      until current_node.next_node == nil
-        current_node = current_node.next_node
-      end
-      current_node.next_node = node 
+      @tail.next_node = node
       @tail = node
     end
   end
 
   def insert(node, index) #perhaps memoization could help here 
     current_node = @head #starting at the head either way
-    if index == 0 #if inserting at 0, 
+    if @head == nil 
+      @head = node
+      @tail = node
+    elsif index == 0 #if inserting at 0, 
       @head = node #node is new head
       node.next_node = current_node #old head is now in position 1
     else 
@@ -47,15 +46,25 @@ class LinkedList
         node.next_node = trailing_node
       else
         current_node.next_node = node
+        @tail = node
       end
     end
   end
   
   def delete(index)
-    if index == 0 
+    if @head.next_node == nil
       deleted_node = @head
       @head = nil
-      @head = deleted_node.next_node # test if this breaks when list is only 1 long
+      @tail = nil
+    elsif index == 0 
+      deleted_node = @head
+      @head = nil
+      #this is weird @head = deleted_node.next_node # test if this breaks when list is only 1 long
+    elsif which_node(index) == @tail
+      deleted_node = @tail
+      saved_node = @tail.prev_node
+      @tail = nil
+      #also weird @tail = saved_node
     else
       prior_node = @head
       current_node = @head.next_node
@@ -64,7 +73,6 @@ class LinkedList
         prior_node = prior_node.next_node #traverse list from behind deletion point
         current_node = current_node.next_node #traverse list until just before the insertion point
       end
-
       deleted_node = current_node
 
       unless current_node.next_node == nil 
@@ -88,7 +96,6 @@ class LinkedList
         current_node = current_node.next_node 
         counter += 1
       end
-
       counter
     end
   end
@@ -114,6 +121,7 @@ class LinkedList
   def insert_by_score(node)
     if @head == nil
       @head = node
+      @tail = node
     else
       current_node = @head
       if node.score < current_node.score

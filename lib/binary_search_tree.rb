@@ -47,7 +47,7 @@ class BinarySearchTree
     end
     
     if value == current.score
-      return counter
+      counter
     elsif value < current.score && current.left != nil
       counter += 1
       depth_of(value, current.left, counter)

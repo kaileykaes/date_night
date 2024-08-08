@@ -47,11 +47,29 @@ RSpec.describe LinkedList do
       @list.append(@node_1)
       @list.append(@node_2)
       @list.insert(@node_0, 0)
-
+      
+      
       expect(@list.which_node(0).score).to eq(67)
       expect(@list.which_node(0).title).to eq("blue")
       expect(@list.which_node(0)).to be_a Node 
       expect(@list.count).to eq(3)
+    end
+    
+    it "can insert at head" do
+      @list.insert(@node_0, 0)
+      @list.insert(@node_1, 0)
+      
+      expect(@list.head).to eq(@node_1)
+      expect(@list.tail).to eq(@node_0)
+      
+    end
+    
+    it "can insert at tail" do
+      @list.append(@node_1)
+      @list.append(@node_2)
+      @list.insert(@node_0, 2)
+
+      expect(@list.tail).to eq(@node_0)
     end
 
     it "#insert_by_score" do
@@ -91,6 +109,17 @@ RSpec.describe LinkedList do
       expect(node.title).to eq("brown")
     end
 
+    it "#delete if tail" do
+      @list.append(@node_1)
+      @list.append(@node_2)
+      @list.append(@node_3)
+
+      node = @list.delete(2)
+
+      expect(node).to be_a Node
+      expect(node.score).to eq(90)
+      expect(node.title).to eq("blue")
+    end
     it "#delete if single node" do
       @list.append(@node_1)
       
