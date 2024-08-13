@@ -47,7 +47,7 @@ class BinarySearchTree
     end
     
     if value == current.score
-      return counter
+      counter
     elsif value < current.score && current.left != nil
       counter += 1
       depth_of(value, current.left, counter)
@@ -83,6 +83,7 @@ class BinarySearchTree
       node = traversal_list.delete(0)
       sorting_list.insert_by_score(node)
       # unless node == nil 
+      #lets try memoization here ||= 
       if node.right != nil && node.right.tag == false
         node.right.next_node = nil
         traversal_list.append(node.right) 
@@ -97,6 +98,29 @@ class BinarySearchTree
     end
     # sorting_list.digest
   end
+
+  # def sort
+  #   if @root == nil 
+  #     return 'no root'
+  #   end
+  #   queue = LinkedList.new
+  #   sorted = LinkedList.new
+
+  #   queue.append(@root)
+
+  #   while queue.count > 0
+
+  #     current_node = queue.head
+
+  #     queue.append(current_node.left)
+  #     queue.append(current_node.right)
+
+  #     sorted.insert_by_score(current_node)
+
+  #     queue.delete(0)
+  #     require 'pry'; binding.pry
+  #   end
+  # end
   
   
   private

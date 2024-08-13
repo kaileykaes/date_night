@@ -51,7 +51,7 @@ RSpec.describe BinarySearchTree do
       expect(@tree.min).to eq({"Johnny English"=>16})
     end
 
-    xit "sort" do
+    it "sort" do
       @tree.insert(26, "Titanic")
       @tree.insert(17, "Up")
       expect(@tree.sort).to eq(
