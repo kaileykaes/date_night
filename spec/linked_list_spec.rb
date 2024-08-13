@@ -11,7 +11,6 @@ RSpec.describe LinkedList do
   end
 
   describe "methods" do
-    it '#next_node' 
 
     it '#prev_node appending' do 
       @list.append(@node_0)
