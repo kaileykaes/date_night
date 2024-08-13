@@ -27,7 +27,7 @@ class LinkedList
     end
   end
 
-  def insert(node, index) #perhaps memoization could help here 
+  def insert(node, index) 
     current_node = @head #starting at the head either way
     if @head == nil 
       @head = node
