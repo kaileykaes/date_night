@@ -77,26 +77,23 @@ class BinarySearchTree
     sorting_list = LinkedList.new
     traversal_list = LinkedList.new
     traversal_list.append(@root)
-    
     while traversal_list.count > 0
-      require 'pry'; binding.pry
       node = traversal_list.delete(0)
       sorting_list.insert_by_score(node)
       # unless node == nil 
       #lets try memoization here ||= 
-      if node.right != nil && node.right.tag == false
-        node.right.next_node = nil
+      if node.right != nil
+        # node.right.next_node = nil
         traversal_list.append(node.right) 
         sorting_list.insert_by_score(node.right)
       end
-      if node.left != nil && node.left.tag == false
-        node.left.next_node = nil 
+      if node.left != nil 
+        # node.left.next_node = nil 
         traversal_list.append(node.left)  
         sorting_list.insert_by_score(node.left)
       end
-      # end
     end
-    # sorting_list.digest
+    sorting_list.digest
   end
 
   # def sort
