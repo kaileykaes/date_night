@@ -81,4 +81,18 @@ RSpec.describe BinarySearchTree do
     expect(@tree.includes?(22)).to be true
     expect(@tree.includes?(41)).to be true
   end
+
+  it 'health' do 
+    healthy_tree = Tree.new
+    healthy_tree.insert(98, "Animals United")
+    healthy_tree.insert(58, "Armageddon")
+    healthy_tree.insert(36, "Bill & Ted's Bogus Journey")
+    healthy_tree.insert(93, "Bill & Ted's Excellent Adventure")
+    healthy_tree.insert(86, "Charlie's Angels")
+    healthy_tree.insert(38, "Charlie's Country")
+    healthy_tree.insert(69, "Collateral Damage")
+    expect(healthy_tree.health(0)).to eq([[98, 7, 100]])
+    expect(healthy_tree.health(1)).to eq([[58, 6, 85]])
+    expect(healthy_tree.health(2)).to eq([[36, 2, 28], [93, 3, 42]])
+  end
 end
