@@ -11,15 +11,93 @@ RSpec.describe LinkedList do
   end
 
   describe "methods" do
-    xit "#prepend" do
-      @list = LinkedList.new
+    it '#next_node' 
+
+    it '#prev_node appending' do 
+      @list.append(@node_0)
+      @list.append(@node_2)
+      @list.append(@node_3)
+
+      tail = @list.tail
+      head = @list.head
+      middle = @list.tail.prev_node
+
+      expect(tail.prev_node).to eq(middle)
+      expect(tail.prev_node).to eq(@node_2)
+      expect(middle.prev_node).to eq(head)
+      expect(middle.prev_node).to eq(@node_0)
+    end
+
+    it '#prev_node prepending' do 
+      @list.prepend(@node_2)
+      @list.prepend(@node_1)
+      @list.prepend(@node_0)
+
+      tail = @list.tail
+      head = @list.head
+      middle = @list.tail.prev_node
+
+      expect(tail.prev_node).to eq(middle)
+      expect(tail.prev_node).to eq(@node_1)
+      expect(middle.prev_node).to eq(head)
+      expect(middle.prev_node).to eq(@node_0)
+    end
+
+    it '#prev_node inserting' do 
+      @list.insert(@node_1, 1)
+      @list.insert(@node_0, 0)
+      @list.insert(@node_2, 2)
+
+      tail = @list.tail
+      head = @list.head
+      middle = @list.tail.prev_node
+
+      expect(tail.prev_node).to eq(middle)
+      expect(tail.prev_node).to eq(@node_1)
+      expect(middle.prev_node).to eq(head)
+      expect(middle.prev_node).to eq(@node_0)
+    end
+
+    it '#prev_node delete tail' do 
+      @list.append(@node_0)
+      @list.append(@node_1)
+      @list.append(@node_2)
+      @list.append(@node_3)
+
+      @list.delete(3)
+
+      head = @list.head
+      tail = @list.tail
+
+      expect(tail).to eq(@node_2)
+      expect(tail.prev_node).to eq(@node_1)
+      expect(tail.prev_node.prev_node).to eq(head)
+    end
+
+    it '#prev_node delete in middle' do 
+      @list.append(@node_0)
+      @list.append(@node_1)
+      @list.append(@node_2)
+      @list.append(@node_3)
+
+      @list.delete(2)
+
+      head = @list.head
+      tail = @list.tail
+
+      expect(tail).to eq(@node_3)
+      expect(tail.prev_node).to eq(@node_1)
+      expect(head).to eq(@node_0)
+    end
+
+    it "#prepend" do
       @list.prepend(@node_1)
       @list.prepend(@node_2)
       expect(@list.head).to eq(@node_2)
       expect(@list.tail).to eq(@node_1)
     end
 
-    xit "#append" do
+    it "#append" do
       @list.prepend(@node_1)
       @list.prepend(@node_2)
       @list.append(@node_3)
@@ -34,7 +112,7 @@ RSpec.describe LinkedList do
       expect(tail).to eq(@node_3)
     end
     
-    xit '#append if only 1' do 
+    it '#append if only 1' do 
       @list.append(@node_3)
       head = @list.head
       tail = @list.tail
@@ -43,7 +121,7 @@ RSpec.describe LinkedList do
       expect(@list.count).to eq(1)
     end
 
-    xit "insert" do
+    it "insert" do
       @list.append(@node_1)
       @list.append(@node_2)
       @list.insert(@node_0, 0)
@@ -72,7 +150,7 @@ RSpec.describe LinkedList do
       expect(@list.tail).to eq(@node_0)
     end
 
-    xit "#insert_by_score" do
+    it "#insert_by_score" do
       @list.insert_by_score(@node_1)
       @list.insert_by_score(@node_2)
       @list.insert_by_score(@node_3)
@@ -84,7 +162,7 @@ RSpec.describe LinkedList do
       expect(@list.tail).to eq(@node_3)
     end
 
-    xit "#delete" do
+    it "#delete" do
       @list.append(@node_0)
       @list.append(@node_1)
       @list.append(@node_2)
@@ -97,13 +175,15 @@ RSpec.describe LinkedList do
       expect(node.title).to eq("green")
     end
 
-    xit "#delete if head" do
+    it "#delete if head" do
       @list.append(@node_1)
       @list.append(@node_2)
       @list.append(@node_3)
 
       node = @list.delete(0)
 
+      expect(@list.head).to eq(@node_2)
+      expect(@list.tail).to eq(@node_3)
       expect(node).to be_a Node
       expect(node.score).to eq(34)
       expect(node.title).to eq("brown")
@@ -115,11 +195,12 @@ RSpec.describe LinkedList do
       @list.append(@node_3)
 
       node = @list.delete(2)
-
+      expect(@list.tail).to eq(@node_2)
       expect(node).to be_a Node
       expect(node.score).to eq(90)
       expect(node.title).to eq("blue")
     end
+
     it "#delete if single node" do
       @list.append(@node_1)
       
@@ -137,13 +218,13 @@ RSpec.describe LinkedList do
       expect(@list.count).to eq(3)
     end
 
-    xit "#count if node empty" do 
+    it "#count if node empty" do 
       @list = LinkedList.new
 
       expect(@list.count).to eq(0)
     end
 
-    xit "#which_node" do 
+    it "#which_node" do 
       @list.append(@node_1)
       @list.append(@node_2)
       @list.append(@node_3)
@@ -154,7 +235,7 @@ RSpec.describe LinkedList do
       expect(node.title).to eq("green")      
     end
 
-    xit 'digest' do 
+    it 'digest' do 
       list = LinkedList.new
       node_1 = Node.new(0, 'Happy Feet')
       node_2 = Node.new(96, 'Freedom Writers')
