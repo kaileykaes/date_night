@@ -108,7 +108,19 @@ class BinarySearchTree
     end
     count
   end
-  
+
+  def health(level)
+    #travel down tree to level for every node at level
+    #create an array of each node on that level 
+    #level of node
+    #score of node
+
+    #all children of particular node
+    
+    #number of all nodes in tree
+    require 'pry'; binding.pry
+  end
+
   # def sort
   #   if @root == nil 
   #     return 'no root'

@@ -83,7 +83,7 @@ RSpec.describe BinarySearchTree do
   end
 
   it 'health' do 
-    healthy_tree = Tree.new
+    healthy_tree = BinarySearchTree.new
     healthy_tree.insert(98, "Animals United")
     healthy_tree.insert(58, "Armageddon")
     healthy_tree.insert(36, "Bill & Ted's Bogus Journey")
