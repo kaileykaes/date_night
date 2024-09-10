@@ -73,4 +73,12 @@ RSpec.describe BinarySearchTree do
       )
     end
   end
+
+  it '#load' do 
+    expect(@tree.load('movies.txt')).to eq(6)
+    expect(@tree.includes?(10)).to be true
+    expect(@tree.includes?(84)).to be true
+    expect(@tree.includes?(22)).to be true
+    expect(@tree.includes?(41)).to be true
+  end
 end

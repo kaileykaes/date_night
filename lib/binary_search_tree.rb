@@ -96,6 +96,19 @@ class BinarySearchTree
     sorting_list.digest
   end
 
+  def load(filepath)
+    count = 0
+    file_contents = File.open("data/#{filepath}").readlines
+    file_contents.each do |content|
+      stuff = content.split(',')
+      title = stuff.last.lstrip.chop
+      score = stuff.first.to_i
+      insert(score, title)
+      count += 1
+    end
+    count
+  end
+  
   # def sort
   #   if @root == nil 
   #     return 'no root'
