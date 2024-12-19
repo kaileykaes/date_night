@@ -14,6 +14,7 @@ class LinkedList
       new_node = node
       new_node.next_node = @head
       @head = new_node
+      @head.next_node.prev_node = @head
     end
   end
 
@@ -22,8 +23,10 @@ class LinkedList
       @head = node
       @tail = node
     else
+      previous = @tail
       @tail.next_node = node
       @tail = node
+      @tail.prev_node = previous
     end
   end
 
@@ -33,8 +36,7 @@ class LinkedList
       @head = node
       @tail = node
     elsif index == 0 #if inserting at 0, 
-      @head = node #node is new head
-      node.next_node = current_node #old head is now in position 1
+      prepend(node)
     else 
       (index - 1).times do # if index is more than zero, 
         current_node = current_node.next_node #traverse list until just before the insertion point
@@ -44,9 +46,9 @@ class LinkedList
         trailing_node = current_node.next_node 
         current_node.next_node = node 
         node.next_node = trailing_node
+        node.prev_node = current_node
       else
-        current_node.next_node = node
-        @tail = node
+        append(node)
       end
     end
   end
@@ -59,26 +61,27 @@ class LinkedList
     elsif index == 0 
       deleted_node = @head
       @head = nil
-      #this is weird @head = deleted_node.next_node # test if this breaks when list is only 1 long
+      @head = deleted_node.next_node #this is weird  # test if this breaks when list is only 1 long
     elsif which_node(index) == @tail
       deleted_node = @tail
       saved_node = @tail.prev_node
       @tail = nil
-      #also weird @tail = saved_node
+      @tail = saved_node #also weird 
     else
-      prior_node = @head
+      # prior_node = @head
       current_node = @head.next_node
-      future_node = current_node.next_node
       (index - 1).times do # if index is more than zero,
-        prior_node = prior_node.next_node #traverse list from behind deletion point
+        # prior_node = prior_node.next_node #traverse list from behind deletion point
         current_node = current_node.next_node #traverse list until just before the insertion point
       end
       deleted_node = current_node
-
+      
       unless current_node.next_node == nil 
+        prior_node = current_node.prev_node
         trailing_node = current_node.next_node
         current_node = nil
         prior_node.next_node = trailing_node
+        trailing_node.prev_node = prior_node
       else
         current_node = nil
       end
